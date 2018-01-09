@@ -8,20 +8,12 @@ RSpec.describe Anagram do
 
     it "initialize the words reader with the path" do
       expect(WordListReader).to receive(:new).with(path: "test_path").and_return(words_reader)
-      allow(words_reader).to receive(:get_words_array)
-      allow(WordsMatcher).to receive(:new)
+      allow(words_reader).to receive(:get_words_sorted_hash)
     end
 
     it "gets the words list from the words reader" do
       allow(WordListReader).to receive(:new).and_return(words_reader)
-      expect(words_reader).to receive(:get_words_array)
-      allow(WordsMatcher).to receive(:new)
-    end
-
-    it "initialize the words matcher" do
-      allow(WordListReader).to receive(:new).and_return(words_reader)
-      allow(words_reader).to receive(:get_words_array)
-      expect(WordsMatcher).to receive(:new)
+      expect(words_reader).to receive(:get_words_sorted_hash)
     end
 
   end
